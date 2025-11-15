@@ -61,19 +61,13 @@ body {
 }
 
 /* ============================================
-   SCROLL FADE EFFECT (OPTIMIZED)
+   SCROLL FADE EFFECT (DISABLED FOR PERFORMANCE)
    ============================================ */
 
 .scroll-fade {
-    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
-    will-change: opacity, transform;
-}
-
-/* Reduce transitions on slower devices */
-@media (max-width: 768px) {
-    .scroll-fade {
-        transition: opacity 0.15s ease-out, transform 0.15s ease-out;
-    }
+    /* Fade effect disabled to improve scroll performance */
+    opacity: 1;
+    transform: none;
 }
 
 /* ============================================
@@ -181,39 +175,6 @@ body {
     line-height: 1.7;
 }
 
-/* Carousel Controls */
-.carousel-controls {
-    position: relative;
-    z-index: 10;
-    margin-bottom: var(--spacing-md);
-}
-
-.carousel-toggle {
-    background: var(--color-dark-gray);
-    border: 1px solid rgba(0, 255, 127, 0.3);
-    color: var(--color-neon-green);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: var(--glow-green);
-}
-
-.carousel-toggle:hover {
-    background: rgba(0, 255, 127, 0.1);
-    box-shadow: var(--glow-green-strong);
-    transform: scale(1.05);
-}
-
-.carousel-toggle:focus {
-    outline: 2px solid var(--color-neon-green);
-    outline-offset: 4px;
-}
-
 /* Carousel Wrapper */
 .carousel-wrapper {
     width: 100%;
@@ -255,8 +216,8 @@ body {
 
 .carousel-item {
     flex: 0 0 auto;
-    width: clamp(280px, 40vw, 450px);
-    aspect-ratio: 2.5 / 1;
+    width: clamp(320px, 45vw, 550px);
+    height: clamp(280px, 25vh, 380px);
     border-radius: var(--radius-lg);
     overflow: hidden;
     position: relative;
@@ -273,10 +234,7 @@ body {
     background: var(--color-dark-gray);
 }
 
-/* Pause on hover */
-.carousel-container:hover .carousel-track {
-    animation-play-state: paused;
-}
+/* Carousel never pauses */
 
 /* ============================================
    EXPERTS SECTION
@@ -495,7 +453,8 @@ body {
     }
     
     .carousel-item {
-        width: clamp(240px, 70vw, 320px);
+        width: clamp(280px, 75vw, 380px);
+        height: clamp(240px, 22vh, 320px);
     }
     
     .experts {

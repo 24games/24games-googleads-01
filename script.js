@@ -40,116 +40,18 @@
     updateButtonLink();
     
     // ============================================
-    // CAROUSEL CONTROLS
+    // PREFERS REDUCED MOTION CHECK
     // ============================================
     
-    const carouselToggle = document.getElementById('carouselToggle');
-    const carouselTrack = document.querySelector('.carousel-track');
-    const pauseIcons = document.querySelectorAll('.pause-icon');
-    const playIcon = document.querySelector('.play-icon');
-    
-    let isCarouselPaused = false;
-    
-    if (carouselToggle && carouselTrack) {
-        carouselToggle.addEventListener('click', function() {
-            isCarouselPaused = !isCarouselPaused;
-            
-            if (isCarouselPaused) {
-                carouselTrack.classList.add('paused');
-                carouselToggle.setAttribute('aria-label', 'Reanudar carrusel automático');
-                
-                // Toggle icons
-                pauseIcons.forEach(icon => icon.style.display = 'none');
-                if (playIcon) playIcon.style.display = 'block';
-            } else {
-                carouselTrack.classList.remove('paused');
-                carouselToggle.setAttribute('aria-label', 'Pausar carrusel automático');
-                
-                // Toggle icons
-                pauseIcons.forEach(icon => icon.style.display = 'block');
-                if (playIcon) playIcon.style.display = 'none';
-            }
-        });
-    }
-    
-    // Respect prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     
-    if (prefersReducedMotion.matches && carouselTrack) {
-        carouselTrack.classList.add('paused');
-        isCarouselPaused = true;
-        
-        if (carouselToggle) {
-            pauseIcons.forEach(icon => icon.style.display = 'none');
-            if (playIcon) playIcon.style.display = 'block';
-            carouselToggle.setAttribute('aria-label', 'Reanudar carrusel automático');
-        }
-    }
-    
     // ============================================
-    // SCROLL FADE OUT EFFECT (OPTIMIZED)
+    // SCROLL FADE OUT EFFECT (DISABLED FOR PERFORMANCE)
     // ============================================
     
-    const scrollFadeElements = document.querySelectorAll('.scroll-fade');
-    let fadeTicking = false;
-    let lastScrollTop = 0;
-    let scrollThrottle = null;
-    
-    function updateScrollFade() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const windowHeight = window.innerHeight;
-        
-        // Only update elements that are near the viewport (optimization)
-        scrollFadeElements.forEach(element => {
-            const rect = element.getBoundingClientRect();
-            
-            // Skip elements that are far below the viewport
-            if (rect.top > windowHeight + 200) return;
-            
-            // Skip elements that are far above the viewport
-            if (rect.bottom < -200) return;
-            
-            // Calculate fade based on element position
-            if (rect.top < 0) {
-                // Element is going up (out of viewport from top)
-                const elementHeight = rect.height;
-                const fadeProgress = Math.abs(rect.top) / (elementHeight * 0.8);
-                const opacity = Math.max(0, 1 - fadeProgress);
-                const translateY = Math.min(fadeProgress * 20, 20); // Reduced from 30 to 20
-                
-                element.style.opacity = opacity;
-                element.style.transform = `translateY(-${translateY}px)`;
-            } else if (rect.top < windowHeight) {
-                // Element is visible, full opacity
-                element.style.opacity = 1;
-                element.style.transform = 'translateY(0)';
-            }
-        });
-        
-        lastScrollTop = scrollTop;
-        fadeTicking = false;
-    }
-    
-    function requestScrollFadeUpdate() {
-        if (!fadeTicking && !prefersReducedMotion.matches) {
-            fadeTicking = true;
-            
-            // Throttle: only update every 16ms (~60fps max)
-            if (scrollThrottle) {
-                clearTimeout(scrollThrottle);
-            }
-            
-            scrollThrottle = setTimeout(() => {
-                window.requestAnimationFrame(updateScrollFade);
-            }, 16);
-        }
-    }
-    
-    // Initial check with delay
-    if (!prefersReducedMotion.matches) {
-        setTimeout(updateScrollFade, 100);
-        window.addEventListener('scroll', requestScrollFadeUpdate, { passive: true });
-    }
+    // Fade out effect temporarily disabled due to performance issues
+    // The effect was causing lag on lower-end devices
+    // Elements will remain at full opacity during scroll
     
     // ============================================
     // PARALLAX EFFECT (OPTIMIZED)
