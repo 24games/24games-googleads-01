@@ -54,50 +54,11 @@
     // Elements will remain at full opacity during scroll
     
     // ============================================
-    // PARALLAX EFFECT (OPTIMIZED)
+    // PARALLAX EFFECT (DISABLED FOR PERFORMANCE)
     // ============================================
     
-    const parallaxSection = document.querySelector('.parallax-section');
-    let ticking = false;
-    let parallaxThrottle = null;
-    
-    function updateParallax() {
-        if (!parallaxSection) return;
-        
-        const scrolled = window.pageYOffset;
-        const parallaxOffset = parallaxSection.offsetTop;
-        const parallaxHeight = parallaxSection.offsetHeight;
-        
-        // Check if section is in viewport (with buffer)
-        if (scrolled + window.innerHeight > parallaxOffset - 100 && 
-            scrolled < parallaxOffset + parallaxHeight + 100) {
-            
-            const yPos = -(scrolled - parallaxOffset) * 0.25; // Reduced from 0.3 to 0.25
-            parallaxSection.style.backgroundPosition = `center ${yPos}px`;
-        }
-        
-        ticking = false;
-    }
-    
-    function requestParallaxUpdate() {
-        if (!ticking && !prefersReducedMotion.matches) {
-            ticking = true;
-            
-            // Throttle: only update every 20ms for parallax
-            if (parallaxThrottle) {
-                clearTimeout(parallaxThrottle);
-            }
-            
-            parallaxThrottle = setTimeout(() => {
-                window.requestAnimationFrame(updateParallax);
-            }, 20);
-        }
-    }
-    
-    // Only apply parallax on desktop and if motion is allowed
-    if (window.innerWidth >= 768 && !prefersReducedMotion.matches) {
-        window.addEventListener('scroll', requestParallaxUpdate, { passive: true });
-    }
+    // Parallax effect disabled - was causing scroll lag
+    // Background is now static
     
     // ============================================
     // SMOOTH SCROLL (for anchor links if added later)

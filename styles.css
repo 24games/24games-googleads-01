@@ -85,6 +85,35 @@ body {
     overflow: hidden;
 }
 
+/* Floating Tech Icons Background */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='1920' height='1080' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Computer Icon --%3E%3Cg opacity='0.08'%3E%3Crect x='200' y='150' width='60' height='45' rx='3' fill='none' stroke='%2300FF7F' stroke-width='2'/%3E%3Crect x='215' y='195' width='30' height='3' fill='%2300FF7F'/%3E%3Cline x1='230' y1='198' x2='230' y2='205' stroke='%2300FF7F' stroke-width='2'/%3E%3Cline x1='220' y1='205' x2='240' y2='205' stroke='%2300FF7F' stroke-width='2'/%3E%3C/g%3E%3C!-- Football Icon --%3E%3Cg opacity='0.1'%3E%3Ccircle cx='1600' cy='200' r='30' fill='none' stroke='%2310B981' stroke-width='2'/%3E%3Cpath d='M 1600 170 L 1610 190 L 1600 195 L 1590 190 Z' fill='none' stroke='%2310B981' stroke-width='2'/%3E%3Cpath d='M 1570 200 L 1585 205 M 1615 205 L 1630 200' stroke='%2310B981' stroke-width='2'/%3E%3C/g%3E%3C!-- Game Controller --%3E%3Cg opacity='0.09'%3E%3Crect x='1400' y='800' width='80' height='35' rx='15' fill='none' stroke='%2300E676' stroke-width='2'/%3E%3Ccircle cx='1425' cy='817' r='5' fill='%2300E676'/%3E%3Ccircle cx='1455' cy='817' r='5' fill='none' stroke='%2300E676' stroke-width='1.5'/%3E%3Cline x1='1465' y1='812' x2='1465' y2='822' stroke='%2300E676' stroke-width='2'/%3E%3Cline x1='1460' y1='817' x2='1470' y2='817' stroke='%2300E676' stroke-width='2'/%3E%3C/g%3E%3C!-- Monitor --%3E%3Cg opacity='0.07'%3E%3Crect x='300' y='850' width='70' height='50' rx='3' fill='none' stroke='%2300FF7F' stroke-width='2'/%3E%3Cline x1='320' y1='900' x2='350' y2='900' stroke='%2300FF7F' stroke-width='2'/%3E%3C/g%3E%3C!-- Soccer Ball Small --%3E%3Cg opacity='0.08'%3E%3Ccircle cx='1700' cy='600' r='20' fill='none' stroke='%2310B981' stroke-width='2'/%3E%3Cpath d='M 1700 580 L 1705 590 L 1700 593 L 1695 590 Z' fill='%2310B981'/%3E%3C/g%3E%3C!-- Keyboard --%3E%3Cg opacity='0.06'%3E%3Crect x='150' y='600' width='90' height='30' rx='3' fill='none' stroke='%2300FF7F' stroke-width='1.5'/%3E%3Cline x1='160' y1='610' x2='230' y2='610' stroke='%2300FF7F' stroke-width='1'/%3E%3Cline x1='160' y1='620' x2='230' y2='620' stroke='%2300FF7F' stroke-width='1'/%3E%3C/g%3E%3C!-- Trophy --%3E%3Cg opacity='0.09'%3E%3Cpath d='M 1550 400 L 1560 420 L 1555 425 L 1545 425 L 1540 420 Z' fill='none' stroke='%2300E676' stroke-width='2'/%3E%3Cline x1='1538' y1='425' x2='1562' y2='425' stroke='%2300E676' stroke-width='2'/%3E%3Cline x1='1545' y1='400' x2='1530' y2='405' stroke='%2300E676' stroke-width='1.5'/%3E%3Cline x1='1555' y1='400' x2='1570' y2='405' stroke='%2300E676' stroke-width='1.5'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: 0;
+    pointer-events: none;
+    animation: floatIcons 60s linear infinite;
+}
+
+@keyframes floatIcons {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-30px) translateX(20px);
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
 .hero-content {
     text-align: center;
     max-width: 1100px;
@@ -119,51 +148,31 @@ body {
     pointer-events: none;
 }
 
-/* Animated Gradient Text */
+/* Animated Gradient Text (SIMPLIFIED) */
 .gradient-animated {
     background: linear-gradient(
         90deg,
         #00FF7F 0%,
-        #00E676 15%,
-        #10B981 30%,
-        #00FFD1 45%,
-        #00FF7F 60%,
-        #39FF14 75%,
-        #10B981 90%,
+        #10B981 50%,
         #00FF7F 100%
     );
-    background-size: 300% 100%;
+    background-size: 200% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradient-shift 4s ease-in-out infinite;
+    animation: gradient-shift 3s ease-in-out infinite;
     position: relative;
     display: inline-block;
-    filter: drop-shadow(0 0 20px rgba(0, 255, 127, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 127, 0.3));
-    will-change: background-position, filter;
-    transform: translateZ(0); /* Force GPU acceleration */
+    text-shadow: 0 0 20px rgba(0, 255, 127, 0.5);
+    transform: translateZ(0);
 }
 
 @keyframes gradient-shift {
-    0% {
+    0%, 100% {
         background-position: 0% 50%;
-        filter: drop-shadow(0 0 20px rgba(0, 255, 127, 0.8)) drop-shadow(0 0 40px rgba(0, 255, 127, 0.4));
-    }
-    25% {
-        background-position: 50% 50%;
-        filter: drop-shadow(0 0 25px rgba(0, 230, 118, 0.9)) drop-shadow(0 0 50px rgba(0, 230, 118, 0.5));
     }
     50% {
         background-position: 100% 50%;
-        filter: drop-shadow(0 0 30px rgba(16, 185, 129, 0.8)) drop-shadow(0 0 60px rgba(16, 185, 129, 0.4));
-    }
-    75% {
-        background-position: 50% 50%;
-        filter: drop-shadow(0 0 25px rgba(0, 255, 209, 0.9)) drop-shadow(0 0 50px rgba(0, 255, 209, 0.5));
-    }
-    100% {
-        background-position: 0% 50%;
-        filter: drop-shadow(0 0 20px rgba(0, 255, 127, 0.8)) drop-shadow(0 0 40px rgba(0, 255, 127, 0.4));
     }
 }
 
@@ -363,12 +372,23 @@ body {
     padding: var(--spacing-2xl) var(--spacing-md);
     overflow: hidden;
     
-    /* Parallax background - PLACEHOLDER: Replace with real football image */
-    background-image: url('assets/parallax-bg-placeholder.jpg');
+    /* Static lightweight football background */
+    background: linear-gradient(135deg, #0A0B0D 0%, #0F1216 50%, #0A0B0D 100%);
+}
+
+.parallax-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='1920' height='1080' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 80 0 L 0 0 0 80' fill='none' stroke='%2300FF7F' stroke-width='0.5' opacity='0.08'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23grid)'/%3E%3Cellipse cx='960' cy='540' rx='300' ry='200' fill='none' stroke='%2300FF7F' stroke-width='3' opacity='0.1'/%3E%3Ccircle cx='960' cy='540' r='80' fill='none' stroke='%2310B981' stroke-width='3' opacity='0.15'/%3E%3Cline x1='960' y1='0' x2='960' y2='1080' stroke='%2300E676' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    opacity: 1;
+    z-index: 0;
 }
 
 .parallax-overlay {
@@ -377,8 +397,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 11, 13, 0.75);
-    backdrop-filter: blur(2px);
+    background: linear-gradient(
+        135deg,
+        rgba(0, 50, 30, 0.85) 0%,
+        rgba(10, 11, 13, 0.9) 50%,
+        rgba(0, 40, 25, 0.85) 100%
+    );
     z-index: 1;
 }
 
@@ -452,6 +476,10 @@ body {
         margin-bottom: var(--spacing-lg);
     }
     
+    .hero::before {
+        animation: none; /* Disable float animation on mobile */
+    }
+    
     .carousel-item {
         width: clamp(280px, 75vw, 380px);
         height: clamp(240px, 22vh, 320px);
@@ -502,12 +530,10 @@ body {
         scroll-behavior: auto !important;
     }
     
-    .carousel-track {
-        animation: none;
-    }
-    
-    .parallax-section {
-        background-attachment: scroll;
+    .carousel-track,
+    .hero::before,
+    .gradient-animated {
+        animation: none !important;
     }
     
     .hero-title::before,
