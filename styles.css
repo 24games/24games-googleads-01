@@ -61,11 +61,19 @@ body {
 }
 
 /* ============================================
-   SCROLL FADE EFFECT
+   SCROLL FADE EFFECT (OPTIMIZED)
    ============================================ */
 
 .scroll-fade {
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    will-change: opacity, transform;
+}
+
+/* Reduce transitions on slower devices */
+@media (max-width: 768px) {
+    .scroll-fade {
+        transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+    }
 }
 
 /* ============================================
@@ -138,6 +146,8 @@ body {
     position: relative;
     display: inline-block;
     filter: drop-shadow(0 0 20px rgba(0, 255, 127, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 127, 0.3));
+    will-change: background-position, filter;
+    transform: translateZ(0); /* Force GPU acceleration */
 }
 
 @keyframes gradient-shift {
@@ -226,6 +236,8 @@ body {
     gap: var(--spacing-md);
     animation: scroll 40s linear infinite;
     will-change: transform;
+    transform: translateZ(0); /* Force GPU acceleration */
+    backface-visibility: hidden;
 }
 
 .carousel-track.paused {

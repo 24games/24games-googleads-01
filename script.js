@@ -87,28 +87,35 @@
     }
     
     // ============================================
-    // SCROLL FADE OUT EFFECT
+    // SCROLL FADE OUT EFFECT (OPTIMIZED)
     // ============================================
     
     const scrollFadeElements = document.querySelectorAll('.scroll-fade');
     let fadeTicking = false;
+    let lastScrollTop = 0;
+    let scrollThrottle = null;
     
     function updateScrollFade() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const windowHeight = window.innerHeight;
         
+        // Only update elements that are near the viewport (optimization)
         scrollFadeElements.forEach(element => {
             const rect = element.getBoundingClientRect();
-            const elementTop = rect.top + scrollTop;
-            const elementHeight = rect.height;
+            
+            // Skip elements that are far below the viewport
+            if (rect.top > windowHeight + 200) return;
+            
+            // Skip elements that are far above the viewport
+            if (rect.bottom < -200) return;
             
             // Calculate fade based on element position
-            // When element is at top of viewport, start fading
             if (rect.top < 0) {
                 // Element is going up (out of viewport from top)
+                const elementHeight = rect.height;
                 const fadeProgress = Math.abs(rect.top) / (elementHeight * 0.8);
                 const opacity = Math.max(0, 1 - fadeProgress);
-                const translateY = Math.min(fadeProgress * 30, 30); // Move up slightly
+                const translateY = Math.min(fadeProgress * 20, 20); // Reduced from 30 to 20
                 
                 element.style.opacity = opacity;
                 element.style.transform = `translateY(-${translateY}px)`;
@@ -116,35 +123,41 @@
                 // Element is visible, full opacity
                 element.style.opacity = 1;
                 element.style.transform = 'translateY(0)';
-            } else {
-                // Element hasn't appeared yet
-                element.style.opacity = 1;
-                element.style.transform = 'translateY(0)';
             }
         });
         
+        lastScrollTop = scrollTop;
         fadeTicking = false;
     }
     
     function requestScrollFadeUpdate() {
         if (!fadeTicking && !prefersReducedMotion.matches) {
-            window.requestAnimationFrame(updateScrollFade);
             fadeTicking = true;
+            
+            // Throttle: only update every 16ms (~60fps max)
+            if (scrollThrottle) {
+                clearTimeout(scrollThrottle);
+            }
+            
+            scrollThrottle = setTimeout(() => {
+                window.requestAnimationFrame(updateScrollFade);
+            }, 16);
         }
     }
     
-    // Initial check
+    // Initial check with delay
     if (!prefersReducedMotion.matches) {
-        updateScrollFade();
+        setTimeout(updateScrollFade, 100);
         window.addEventListener('scroll', requestScrollFadeUpdate, { passive: true });
     }
     
     // ============================================
-    // PARALLAX EFFECT
+    // PARALLAX EFFECT (OPTIMIZED)
     // ============================================
     
     const parallaxSection = document.querySelector('.parallax-section');
     let ticking = false;
+    let parallaxThrottle = null;
     
     function updateParallax() {
         if (!parallaxSection) return;
@@ -153,11 +166,11 @@
         const parallaxOffset = parallaxSection.offsetTop;
         const parallaxHeight = parallaxSection.offsetHeight;
         
-        // Check if section is in viewport
-        if (scrolled + window.innerHeight > parallaxOffset && 
-            scrolled < parallaxOffset + parallaxHeight) {
+        // Check if section is in viewport (with buffer)
+        if (scrolled + window.innerHeight > parallaxOffset - 100 && 
+            scrolled < parallaxOffset + parallaxHeight + 100) {
             
-            const yPos = -(scrolled - parallaxOffset) * 0.3;
+            const yPos = -(scrolled - parallaxOffset) * 0.25; // Reduced from 0.3 to 0.25
             parallaxSection.style.backgroundPosition = `center ${yPos}px`;
         }
         
@@ -166,8 +179,16 @@
     
     function requestParallaxUpdate() {
         if (!ticking && !prefersReducedMotion.matches) {
-            window.requestAnimationFrame(updateParallax);
             ticking = true;
+            
+            // Throttle: only update every 20ms for parallax
+            if (parallaxThrottle) {
+                clearTimeout(parallaxThrottle);
+            }
+            
+            parallaxThrottle = setTimeout(() => {
+                window.requestAnimationFrame(updateParallax);
+            }, 20);
         }
     }
     
