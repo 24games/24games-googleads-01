@@ -1,0 +1,565 @@
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --color-black: #0A0B0D;
+    --color-dark-gray: #0F1216;
+    --color-neon-green: #00FF7F;
+    --color-green-alt-1: #10B981;
+    --color-green-alt-2: #00E676;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #C9D1D9;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 4rem;
+    --spacing-2xl: 6rem;
+    
+    /* Typography */
+    --font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    
+    /* Shadows & Glow */
+    --glow-green: 0 0 20px rgba(0, 255, 127, 0.35);
+    --glow-green-strong: 0 0 30px rgba(0, 255, 127, 0.5);
+    --glow-text: 0 0 15px rgba(0, 255, 127, 0.4);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-black);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+    
+    /* Subtle noise texture */
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 127, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.02) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+}
+
+/* ============================================
+   SCROLL FADE EFFECT
+   ============================================ */
+
+.scroll-fade {
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 1100px;
+    margin-bottom: var(--spacing-xl);
+    z-index: 2;
+}
+
+.hero-title {
+    position: relative;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    
+    /* Glow effect */
+    text-shadow: var(--glow-text);
+}
+
+.hero-title::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 150%;
+    background: radial-gradient(ellipse, rgba(0, 255, 127, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Animated Gradient Text */
+.gradient-animated {
+    background: linear-gradient(
+        90deg,
+        #00FF7F 0%,
+        #00E676 15%,
+        #10B981 30%,
+        #00FFD1 45%,
+        #00FF7F 60%,
+        #39FF14 75%,
+        #10B981 90%,
+        #00FF7F 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 4s ease-in-out infinite;
+    position: relative;
+    display: inline-block;
+    filter: drop-shadow(0 0 20px rgba(0, 255, 127, 0.6)) drop-shadow(0 0 40px rgba(0, 255, 127, 0.3));
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 20px rgba(0, 255, 127, 0.8)) drop-shadow(0 0 40px rgba(0, 255, 127, 0.4));
+    }
+    25% {
+        background-position: 50% 50%;
+        filter: drop-shadow(0 0 25px rgba(0, 230, 118, 0.9)) drop-shadow(0 0 50px rgba(0, 230, 118, 0.5));
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: drop-shadow(0 0 30px rgba(16, 185, 129, 0.8)) drop-shadow(0 0 60px rgba(16, 185, 129, 0.4));
+    }
+    75% {
+        background-position: 50% 50%;
+        filter: drop-shadow(0 0 25px rgba(0, 255, 209, 0.9)) drop-shadow(0 0 50px rgba(0, 255, 209, 0.5));
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 20px rgba(0, 255, 127, 0.8)) drop-shadow(0 0 40px rgba(0, 255, 127, 0.4));
+    }
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-text-secondary);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+    position: relative;
+    z-index: 10;
+    margin-bottom: var(--spacing-md);
+}
+
+.carousel-toggle {
+    background: var(--color-dark-gray);
+    border: 1px solid rgba(0, 255, 127, 0.3);
+    color: var(--color-neon-green);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--glow-green);
+}
+
+.carousel-toggle:hover {
+    background: rgba(0, 255, 127, 0.1);
+    box-shadow: var(--glow-green-strong);
+    transform: scale(1.05);
+}
+
+.carousel-toggle:focus {
+    outline: 2px solid var(--color-neon-green);
+    outline-offset: 4px;
+}
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+    width: 100%;
+    max-width: 1400px;
+    position: relative;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    
+    /* Fade effect on edges using mask */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.carousel-track {
+    display: flex;
+    gap: var(--spacing-md);
+    animation: scroll 40s linear infinite;
+    will-change: transform;
+}
+
+.carousel-track.paused {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.carousel-item {
+    flex: 0 0 auto;
+    width: clamp(280px, 40vw, 450px);
+    aspect-ratio: 2.5 / 1;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    
+    /* Glow effect */
+    filter: drop-shadow(var(--glow-green));
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: var(--color-dark-gray);
+}
+
+/* Pause on hover */
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+/* ============================================
+   EXPERTS SECTION
+   ============================================ */
+
+.experts {
+    padding: var(--spacing-2xl) var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.expert-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-lg);
+    background: var(--color-dark-gray);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0, 255, 127, 0.2);
+    
+    /* Glow effect */
+    box-shadow: var(--glow-green);
+}
+
+.expert-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius-lg);
+    background: radial-gradient(circle at 30% 50%, rgba(0, 255, 127, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.expert-image-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.expert-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    background: var(--color-black);
+    
+    /* Glow effect */
+    filter: drop-shadow(0 0 15px rgba(0, 255, 127, 0.3));
+}
+
+.expert-content {
+    position: relative;
+    z-index: 1;
+}
+
+.expert-name {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+    text-shadow: 0 0 10px rgba(0, 255, 127, 0.3);
+}
+
+.expert-title {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    color: var(--color-neon-green);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.expert-description {
+    font-size: clamp(0.95rem, 1.8vw, 1.0625rem);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.expert-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-neon-green);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.expert-social::before {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(0, 255, 127, 0.2) 0%, transparent 70%);
+    filter: blur(12px);
+    z-index: -1;
+}
+
+.expert-social:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(0, 255, 127, 0.6));
+}
+
+.expert-social:focus {
+    outline: 2px solid var(--color-neon-green);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* ============================================
+   PARALLAX SECTION
+   ============================================ */
+
+.parallax-section {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2xl) var(--spacing-md);
+    overflow: hidden;
+    
+    /* Parallax background - PLACEHOLDER: Replace with real football image */
+    background-image: url('assets/parallax-bg-placeholder.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.parallax-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 11, 13, 0.75);
+    backdrop-filter: blur(2px);
+    z-index: 1;
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: rgba(15, 18, 22, 0.6);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0, 255, 127, 0.25);
+    
+    /* Subtle glow */
+    box-shadow: 0 0 40px rgba(0, 255, 127, 0.15);
+}
+
+.parallax-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 0 12px rgba(0, 255, 127, 0.35);
+}
+
+.parallax-text {
+    font-size: clamp(1rem, 2vw, 1.1875rem);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+}
+
+.btn-conocer {
+    display: inline-block;
+    padding: 0.875rem 2.5rem;
+    background: var(--color-green-alt-1);
+    color: var(--color-text-primary);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+    border: none;
+    
+    /* NO GLOW - As requested */
+}
+
+.btn-conocer:hover {
+    background: var(--color-neon-green);
+    transform: translateY(-2px);
+}
+
+.btn-conocer:active {
+    transform: translateY(0);
+}
+
+.btn-conocer:focus {
+    outline: 2px solid var(--color-neon-green);
+    outline-offset: 4px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN (Mobile First)
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    
+    .hero-content {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .carousel-item {
+        width: clamp(240px, 70vw, 320px);
+    }
+    
+    .experts {
+        padding: var(--spacing-xl) var(--spacing-sm);
+    }
+    
+    .expert-card {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .expert-image {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    .parallax-section {
+        background-attachment: scroll; /* Fixed doesn't work well on mobile */
+        min-height: 60vh;
+    }
+    
+    .parallax-content {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .expert-card {
+        grid-template-columns: 1fr 1.8fr;
+        gap: var(--spacing-md);
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY: Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .carousel-track {
+        animation: none;
+    }
+    
+    .parallax-section {
+        background-attachment: scroll;
+    }
+    
+    .hero-title::before,
+    .expert-card::before,
+    .expert-social::before {
+        display: none;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .carousel-controls,
+    .carousel-wrapper {
+        display: none;
+    }
+    
+    .expert-card,
+    .parallax-section {
+        box-shadow: none;
+        filter: none;
+    }
+}
+

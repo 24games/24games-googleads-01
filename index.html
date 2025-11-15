@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce a los mejores especialistas que integran nuestro equipo: profesionales con experiencia real, visión estratégica y pasión por el fútbol chileno.">
+    <meta name="theme-color" content="#0A0B0D">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Embajadores — Nuestro Proyecto">
+    <meta property="og:description" content="Presentamos a los embajadores de nuestro proyecto: profesionales con experiencia real, visión estratégica y una pasión que conecta con la comunidad.">
+    <meta property="og:image" content="assets/og-image.jpg">
+    
+    <title>Embajadores — Nuestro Proyecto</title>
+    
+    <!-- Google Fonts - Exo 2 (Modern Tech Font) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero scroll-fade" id="hero">
+            <div class="hero-content scroll-fade">
+                <h1 class="hero-title">¡LOS <span class="gradient-animated">MEJORES ESPECIALISTAS</span> QUE INTEGRAN NUESTRO EQUIPO!</h1>
+                <p class="hero-subtitle">Presentamos a los embajadores de nuestro proyecto: profesionales con experiencia real, visión estratégica y una pasión que conecta con la comunidad.</p>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <div class="carousel-controls">
+                <button id="carouselToggle" class="carousel-toggle" aria-label="Pausar carrusel automático">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="4" width="4" height="16" fill="currentColor" class="pause-icon"/>
+                        <rect x="14" y="4" width="4" height="16" fill="currentColor" class="pause-icon"/>
+                        <path d="M8 5v14l11-7z" fill="currentColor" class="play-icon" style="display: none;"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Carousel -->
+            <div class="carousel-wrapper scroll-fade">
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <!-- Banner 1 -->
+                        <div class="carousel-item">
+                            <img src="assets/banner-1-placeholder.png" alt="Banner 1" loading="lazy">
+                        </div>
+                        <!-- Banner 2 -->
+                        <div class="carousel-item">
+                            <img src="assets/banner-2-placeholder.png" alt="Banner 2" loading="lazy">
+                        </div>
+                        <!-- Banner 3 -->
+                        <div class="carousel-item">
+                            <img src="assets/banner-3-placeholder.png" alt="Banner 3" loading="lazy">
+                        </div>
+                        
+                        <!-- Duplicados para loop infinito -->
+                        <div class="carousel-item">
+                            <img src="assets/banner-1-placeholder.png" alt="Banner 1" loading="lazy">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/banner-2-placeholder.png" alt="Banner 2" loading="lazy">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/banner-3-placeholder.png" alt="Banner 3" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experts Section -->
+        <section class="experts" id="experts">
+            <!-- Expert 1: Vicente -->
+            <article class="expert-card scroll-fade">
+                <div class="expert-image-wrapper">
+                    <img src="assets/profile vicengte.png" alt="Vicente - Analista profesional de fútbol" class="expert-image" loading="lazy">
+                </div>
+                <div class="expert-content">
+                    <h2 class="expert-name">Vicente</h2>
+                    <p class="expert-title">Analista profesional de fútbol</p>
+                    <p class="expert-description">Especialista en análisis de rendimiento y lectura táctica. Su enfoque combina datos, observación y contexto competitivo para ofrecer una mirada clara y accionable.</p>
+                    <a href="https://www.instagram.com/vicentetips/" target="_blank" rel="noopener noreferrer" class="expert-social" aria-label="Instagram de Vicente">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Expert 2: Rodrigo Quiroga -->
+            <article class="expert-card scroll-fade">
+                <div class="expert-image-wrapper">
+                    <img src="assets/expert-rodrigo-placeholder.png" alt="Rodrigo Quiroga - Periodista deportivo" class="expert-image" loading="lazy">
+                </div>
+                <div class="expert-content">
+                    <h2 class="expert-name">Rodrigo Quiroga</h2>
+                    <p class="expert-title">Periodista deportivo</p>
+                    <p class="expert-description">Periodista deportivo con trayectoria en cobertura, entrevistas y opinión. Aporta criterio editorial y mirada crítica sobre el juego, los clubes y la hinchada.</p>
+                    <a href="https://www.instagram.com/rockyquirogav/" target="_blank" rel="noopener noreferrer" class="expert-social" aria-label="Instagram de Rodrigo Quiroga">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Expert 3: Elian -->
+            <article class="expert-card scroll-fade">
+                <div class="expert-image-wrapper">
+                    <img src="assets/expert-vicente-placeholder.png" alt="Elian - Analista de probabilidad" class="expert-image" loading="lazy">
+                </div>
+                <div class="expert-content">
+                    <h2 class="expert-name">Elian</h2>
+                    <p class="expert-title">Analista de probabilidad</p>
+                    <p class="expert-description">Analista enfocado en probabilidades y escenarios. Traduce modelos y métricas en conclusiones simples, útiles y orientadas a resultados.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- Parallax Section -->
+        <section class="parallax-section" id="apoyo">
+            <div class="parallax-overlay"></div>
+            <div class="parallax-content">
+                <h2 class="parallax-title">Comprometidos con el fútbol chileno</h2>
+                <p class="parallax-text">Creemos en el crecimiento sostenido del fútbol nacional. Acompañamos a la comunidad, respetamos su historia y apostamos por más desarrollo, más oportunidades y más pasión en cada fecha.</p>
+                <a href="#" class="btn-conocer" aria-label="Conocer más">Conocer</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+

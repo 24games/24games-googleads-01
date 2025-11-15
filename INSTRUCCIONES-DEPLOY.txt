@@ -1,0 +1,103 @@
+═══════════════════════════════════════════════════════════════════
+  INSTRUCCIONES DE DEPLOY - EMBAJADORES WEBSITE
+═══════════════════════════════════════════════════════════════════
+
+📦 PASO 1: PREPARAR ARCHIVOS
+────────────────────────────────────────────────────────────────────
+1. Abre esta carpeta: embajadores/
+2. Verifica que contenga:
+   ✓ index.html
+   ✓ styles.css
+   ✓ script.js
+   ✓ assets/ (con todos los placeholders)
+   ✓ README.md
+
+🌐 PASO 2: SUBIR A HOSTGATOR
+────────────────────────────────────────────────────────────────────
+OPCIÓN A - En subdirectorio (Recomendado):
+1. Accede a cPanel de HostGator
+2. Abre el Administrador de Archivos
+3. Navega a public_html/
+4. Sube la carpeta COMPLETA "embajadores/"
+5. Tu sitio estará en: https://tudominio.com/embajadores/
+
+OPCIÓN B - En la raíz del dominio:
+1. Accede a cPanel de HostGator
+2. Abre el Administrador de Archivos
+3. Navega a public_html/
+4. Sube el CONTENIDO de "embajadores/" (NO la carpeta)
+5. Tu sitio estará en: https://tudominio.com/
+
+🖼️ PASO 3: REEMPLAZAR IMÁGENES PLACEHOLDER
+────────────────────────────────────────────────────────────────────
+Después de subir, reemplaza estos archivos en assets/:
+
+📸 BANNERS DEL CARRUSEL (3 archivos):
+   → banner-1-placeholder.jpg (900x360px, proporción 2.5:1)
+   → banner-2-placeholder.jpg (900x360px, proporción 2.5:1)
+   → banner-3-placeholder.jpg (900x360px, proporción 2.5:1)
+
+👤 FOTOS DE EXPERTOS (3 archivos):
+   → expert-vicente-placeholder.jpg (400x533px, proporción 3:4)
+   → expert-rodrigo-placeholder.jpg (400x533px, proporción 3:4)
+   → expert-elian-placeholder.jpg (400x533px, proporción 3:4)
+
+⚽ FONDO PARALLAX (1 archivo):
+   → parallax-bg-placeholder.jpg (1920x1080px o mayor)
+   NOTA: Usa una imagen oscura de fútbol chileno
+
+📱 IMAGEN REDES SOCIALES (1 archivo):
+   → og-image.jpg (1200x630px, Open Graph)
+
+⚠️ IMPORTANTE: 
+   - Mantén los mismos nombres de archivo
+   - O actualiza las rutas en index.html si cambias los nombres
+   - Usa formatos JPG o PNG
+   - Optimiza las imágenes antes de subir (compresión)
+
+✅ PASO 4: VERIFICACIÓN FINAL
+────────────────────────────────────────────────────────────────────
+Abre tu sitio en el navegador y verifica:
+
+□ La página carga correctamente
+□ El carrusel se mueve automáticamente
+□ El botón play/pause funciona
+□ Las fotos de expertos se ven bien
+□ Los links de Instagram funcionan:
+  - Vicente: https://www.instagram.com/vicentetips/
+  - Rodrigo: https://www.instagram.com/rockyquirogav/
+□ El parallax funciona (en desktop)
+□ El botón "Conocer" aparece sin glow verde
+□ El sitio es responsive (prueba en mobile)
+
+🔧 PERSONALIZACIÓN (OPCIONAL)
+────────────────────────────────────────────────────────────────────
+Para modificar colores, textos o contenido:
+1. Descarga los archivos desde HostGator
+2. Edita index.html (textos) o styles.css (colores)
+3. Vuelve a subir los archivos modificados
+4. Consulta README.md para más detalles
+
+📞 ENLACES IMPORTANTES
+────────────────────────────────────────────────────────────────────
+Instagram Vicente: https://www.instagram.com/vicentetips/
+Instagram Rodrigo: https://www.instagram.com/rockyquirogav/
+(Elian no tiene Instagram configurado)
+
+🎯 CARACTERÍSTICAS DESTACADAS
+────────────────────────────────────────────────────────────────────
+✓ 100% estático (sin base de datos)
+✓ Sin frameworks (HTML/CSS/JS puro)
+✓ Funciona offline
+✓ Optimizado para SEO
+✓ Responsive (mobile, tablet, desktop)
+✓ Accesible (WCAG)
+✓ Efecto glow verde en elementos
+✓ Carrusel infinito con fade
+✓ Parallax en sección fútbol chileno
+
+═══════════════════════════════════════════════════════════════════
+✨ ¡Tu sitio está listo para producción! ✨
+═══════════════════════════════════════════════════════════════════
+
+
