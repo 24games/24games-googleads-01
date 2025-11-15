@@ -7,6 +7,39 @@
     'use strict';
 
     // ============================================
+    // DYNAMIC BUTTON LINK BASED ON SLUG
+    // ============================================
+    
+    function updateButtonLink() {
+        const btnConocer = document.querySelector('.btn-conocer');
+        if (!btnConocer) return;
+        
+        // Get the current path (slug)
+        const pathname = window.location.pathname;
+        const slug = pathname.split('/').filter(Boolean).pop() || '';
+        
+        // Base URL for affiliate link
+        const baseURL = 'https://go.aff.24gamespartners.com/ex9wjlb9';
+        
+        // If there's a slug (like axt25, axt26), use it
+        // Otherwise, use a default campaign
+        const campaign = slug || 'Gads_default';
+        
+        // Build the final URL
+        const finalURL = `${baseURL}?utm_campaign=Gads_${campaign}`;
+        
+        // Update button href
+        btnConocer.href = finalURL;
+        
+        // Log for debugging (remove in production)
+        console.log('Slug detected:', slug || 'none (root)');
+        console.log('Button URL:', finalURL);
+    }
+    
+    // Update button link on page load
+    updateButtonLink();
+    
+    // ============================================
     // CAROUSEL CONTROLS
     // ============================================
     
